@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delphi</title>
+  <link href="../static/css/delphi.css" rel="stylesheet" type="text/css">
+  <script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header> <a href="/">
+        <h4 class="logo">DELPHI</h4>
+      </a>
+      <nav>
+        <ul>
+
+          <li><a href="/">HOME</a></li>
+          <li><a href="/team">THE TEAM</a></li>
+          <li><a href="/about">ABOUT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero" id="hero">
+      <h2 class="hero_header"> <span class="light">DELPHI</span></h2>
+      <p class="tagline">YOUR PERSONAL ORACLE</p>
+    </section>
+
+    <section class="footer_banner" id="contact" style="text-align: center">
+      <h2 class="hidden">Footer Banner Section </h2>
+      <p class="hero_header"><strong>ENTER YOUR DATE OF BIRTH</strong></p>
+      <div style="text-align: center;padding-top: 2em">
+        <label for="date" style="color:white;padding-right: 1em"><strong>DATE:</strong></label>
+        <input type="date" name="date" id="date" style="margin-bottom: 5em">
+      </div>
+      <button type="button" onclick="loadProfile()">ANALYZE</button>
+
+    </section>
+
+    <footer>
+      <article class="footer_column">
+        <p>"Delphi is the best website I've ever used. I've never been more satisfied with anything in my entire life! I
+          give this a 10/10 and would highly recommend it to anyone. Thanks Delphi!" </p>
+        <p>- Testimony 1</p>
+      </article>
+      <article class="footer_column">
+        <p>"I was incredibly bored before I found Delphi. This is exactly the kind of entertainment and information that
+          I needed during this period of social distancing. I wish I had found this sooner! Thanks so much for
+          everything, Delphi." </p>
+        <p>- Testimony 2</p>
+      </article>
+    </footer>
+
+    <section class="footer_banner">
+    </section>
+  </div>
+
+  <script>
+    function loadProfile() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(xhttp.responseText)
+          window.open("/results/" + xhttp.responseText,"_self")
+        }
+      };
+      xhttp.open("POST", "/profile", true);
+      xhttp.setRequestHeader("Content-type", "application/json");
+      var data = {
+        date: document.getElementById("date").value
+      }
+      xhttp.send(JSON.stringify(data));
+      // window.open("/profile","_self");
+    }
+    </script>
+
+</body>
+
+</html>
