@@ -2,7 +2,7 @@
 Delphi
 
 ```
-git clone https://github.com/tiffkwin/WebAppsProject
+git clone https://github.com/tiffkwin/WebAppsProject.git
 ```
 
 ```
